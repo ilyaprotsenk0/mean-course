@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="title"
+        placeholder="Post title"
+      />
+      <mat-error *ngIf="form.get('title').invalid"
+        >Please fill the title. Required length - 4 symbols
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="10"
+        formControlName="description"
+        placeholder="Post description"
+      ></textarea>
+      <mat-error *ngIf="form.get('description').invalid"
+        >Please fill the description. Required length - 16 symbols
+      </mat-error>
+    </mat-form-field>
+    <button mat-stroked-button type="button" (click)="pickImage.click()">
+      Select image
+    </button>
+    <input type="file" #pickImage (change)="onImagePicked($event)" />
+    <div
+      class="image-preview"
+      *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid"
+    >
+      <img [src]="imagePreview" alt="form.value.title" />
+    </div>
+    <br />
+    <button mat-stroked-button="basic" type="submit">Save post</button>
+  </form>
+</mat-card>

@@ -1,0 +1,16 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+*:hover {
+  color: orange;
+}
+
+.visited {
+  color: orange;
+}
