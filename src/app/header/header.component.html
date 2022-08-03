@@ -1,8 +1,17 @@
 <mat-toolbar color="basic">
   <span><a routerLink="/">Posts App</a></span>
   <ul>
-    <li>
+    <li *ngIf="userIsAuth">
       <a routerLink="/create" routerLinkActive="visited">Add post</a>
+    </li>
+    <li *ngIf="!userIsAuth">
+      <a routerLink="/login" routerLinkActive="visited">Login</a>
+    </li>
+    <li *ngIf="!userIsAuth"> 
+      <a routerLink="/signup" routerLinkActive="visited">Sign up</a>
+    </li>
+    <li *ngIf="userIsAuth">
+      <button mat-button (click)="onLogOut()">Logout</button>
     </li>
   </ul>
 </mat-toolbar>
